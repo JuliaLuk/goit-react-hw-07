@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchTasks, deleteTasks } from "./redux/operations";
+import { fetchTasks, deleteTask } from "./redux/operations";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -13,14 +13,13 @@ export default function App() {
   return (
     <div>
       {loading && <p>LOADING...</p>}
-      {error && <p>ERROR!!!!</p>}
+      {error && <p>ERROR!!!!!</p>}
       {items.length > 0 && (
         <ul>
           {items.map((item) => (
             <li key={item.id}>
               <p>{item.text}</p>
-
-              <button onClick={() => dispatch(deleteTasks(item.id))}>
+              <button onClick={() => dispatch(deleteTask(item.id))}>
                 Delete
               </button>
             </li>
